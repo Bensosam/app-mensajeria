@@ -11,8 +11,10 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
 import android.view.inputmethod.EditorInfo
+import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.prototipo5.MainMenu
 import com.example.prototipo5.databinding.ActivityNuevaContraBinding
 
 import com.example.prototipo5.R
@@ -30,9 +32,17 @@ class NuevaContra : AppCompatActivity() {
 
         val username = binding.username
         val password = binding.password
-        val login = binding.login
+
         val loading = binding.loading
 
+
+        val login = findViewById<Button>(R.id.login)
+        login.setOnClickListener {
+
+            val intent3 = Intent(this, MainMenu::class.java)
+            startActivity(intent3)
+
+        }
         loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
             .get(LoginViewModel::class.java)
 
@@ -50,6 +60,11 @@ class NuevaContra : AppCompatActivity() {
             }
         })
 
+        /* ESTA ONDA SE ENCARGA DE ACTUALIZAR LA CONTRASEÑA DE UN USUARIO PARA
+        LOGEARSE, PERO COMO NO TENGO BASE DE DATOS PARA ENLAZAR Y ESTOY HASTA LA MADRE, SOLO LO
+        COMENTE PARA PODER REVISAR LAS SIGUIENTES PANTALLAS Y SUS CONEXIONES ENTRE SI.
+        PD: CESAR ES GAY
+
         loginViewModel.loginResult.observe(this@NuevaContra, Observer {
             val loginResult = it ?: return@Observer
 
@@ -65,6 +80,7 @@ class NuevaContra : AppCompatActivity() {
             //Complete and destroy login activity once successful
             finish()
         })
+
 
         username.afterTextChanged1 {
             loginViewModel.loginDataChanged(
@@ -97,7 +113,11 @@ class NuevaContra : AppCompatActivity() {
                 loginViewModel.login(username.text.toString(), password.text.toString())
             }
         }
+
+         */
     }
+
+
 
     private fun updateUiWithUser(model: LoggedInUserView) {
         val welcome = getString(R.string.welcome)

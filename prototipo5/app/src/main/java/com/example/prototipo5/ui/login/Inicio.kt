@@ -4,6 +4,8 @@ import android.content.Intent
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
+import android.os.Parcel
+import android.os.Parcelable
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AppCompatActivity
 import android.text.Editable
@@ -14,10 +16,11 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import com.example.prototipo5.CrearUsuario
+import com.example.prototipo5.MainMenu
 import com.example.prototipo5.databinding.ActivityInicioBinding
 import com.example.prototipo5.R
 
-class Inicio : AppCompatActivity() {
+class Inicio() : AppCompatActivity() {
 
     private lateinit var loginViewModel: LoginViewModel
     private lateinit var binding: ActivityInicioBinding
@@ -31,19 +34,29 @@ class Inicio : AppCompatActivity() {
 
         val username = binding.username
         val password = binding.password
-        val login = binding.login
         val loading = binding.loading
-        var contra = findViewById<Button>(R.id.contra)
+
+
+
+        val login = findViewById<Button>(R.id.login)
+        login.setOnClickListener {
+
+            val intent3 = Intent(this, MainMenu::class.java)
+            startActivity(intent3)
+
+        }
+        val contra = findViewById<Button>(R.id.contra)
         contra.setOnClickListener {
 
             val intent1 = Intent(this, NuevaContra::class.java)
             startActivity(intent1)
         }
-        var tocrearusuario = findViewById<Button>(R.id.tocrearusuario)
+        val tocrearusuario = findViewById<Button>(R.id.tocrearusuario)
         tocrearusuario.setOnClickListener {
 
             val intent2 = Intent(this, CrearUsuario::class.java)
             startActivity(intent2)
+
             loginViewModel = ViewModelProvider(this, LoginViewModelFactory())
                 .get(LoginViewModel::class.java)
 
@@ -61,21 +74,7 @@ class Inicio : AppCompatActivity() {
                 }
             })
 
-            loginViewModel.loginResult.observe(this@Inicio, Observer {
-                val loginResult = it ?: return@Observer
 
-                loading.visibility = View.GONE
-                if (loginResult.error != null) {
-                    showLoginFailed(loginResult.error)
-                }
-                if (loginResult.success != null) {
-                    updateUiWithUser(loginResult.success)
-                }
-                setResult(RESULT_OK)
-
-                //Complete and destroy login activity once successful
-                finish()
-            })
 
             username.afterTextChanged1 {
                 loginViewModel.loginDataChanged(
@@ -162,11 +161,17 @@ class Inicio : AppCompatActivity() {
         }
     }
 
-    private fun updateUiWithUser(success: LoggedInUserView) {
+    fun updateUiWithUser(success: LoggedInUserView) {
         TODO("Not yet implemented")
     }
 
-    private fun showLoginFailed(error: Int) {
+    fun showLoginFailed(error: Int) {
         TODO("Not yet implemented")
     }
+
 }
+
+
+
+
+

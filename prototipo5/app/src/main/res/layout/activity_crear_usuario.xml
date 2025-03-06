@@ -8,7 +8,7 @@
     tools:context=".CrearUsuario">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/tomainmenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Iniciar Sesion"
@@ -42,7 +42,7 @@
         android:ems="10"
         android:hint="correo electronico"
         android:inputType="textEmailAddress"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/tomainmenu"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"

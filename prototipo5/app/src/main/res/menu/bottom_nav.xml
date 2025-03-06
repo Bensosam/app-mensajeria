@@ -1,4 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
+    <item android:title="Settings"
+        android:id="@+id/Bottom_Settings"
+        android:icon="@drawable/baseline_settings_24"
+        />
+    <item android:title="Chat"
+        android:id="@+id/Bottom_Chat"
+        android:icon="@drawable/baseline_announcement_24"
+        />
+    <item android:title="General"
+        android:id="@+id/Bottom_General"
+        android:icon="@drawable/baseline_contacts_24"
+        />
 </menu>

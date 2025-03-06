@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item android:title="Usuario"
+        android:id="@+id/OpUsuario"
+        app:showAsAction="never"
+        />
+
+    <item android:title="Favoritos"
+        android:id="@+id/OpFavoritos"
+        app:showAsAction="never"
+        />
+
+    <item android:title="Contactos"
+        android:id="@+id/OpContactos"
+        app:showAsAction="never"
+        />
+
+    <item android:title="Ayuda"
+        android:id="@+id/OpAyuda"
+        app:showAsAction="never"
+        />
+
+</menu>
